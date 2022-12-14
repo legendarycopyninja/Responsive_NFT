@@ -2,6 +2,7 @@ body {
     color: #2b283a;
     font-family: 'Roboto', sans-serif;
     margin: 0;
+    /* font-size: 25px; */
 }
 
 /* ----- TYPOGRAPHY ----- */
@@ -11,28 +12,51 @@ h3 {
     margin: 0;
 }
 
+/*
+  Challenge:
+   - Convert the font-size values of the
+     h1, h2, h3 and .subheading and .btn class from px to rem
+*/
+
 h1 {
     color: whitesmoke;
-    font-size: 36px;
+    font-size: 1.75rem; /* convert to rem */
 }
+
+/*
+  Challenge: Responsive text
+    - h2:
+        - Initial size: rem value equal to 22px
+        - At 768px: increase to 1.75rem
+    - .subheading:
+        - Initial size: suitable for smaller screens
+        - At 768px: increase to 1.25rem  
+    - Paragraphs:
+        - At 768px: increase to rem value equal to 18px
+*/
 
 h2 {
     color: #451c7a;
-    font-size: 28px;
+    font-size: 1.375rem; /* convert to rem */
     margin-top: 0;
 }
 
 h3 {
-    font-size: 20px;
+    font-size: 1.1rem; /* convert to rem */
 }
 
+/*
+  Challenge:
+   - Set the line-height of the paragraph to a unitless value
+     that’s 150% larger than the font size
+*/
 p {
-    line-height: 23px;
+    line-height: 1.5;
 }
 
 .subheading {
     display: block;
-    font-size: 20px;
+    font-size: 1rem; 
     color: #d0aaff;
 }
 
@@ -51,14 +75,30 @@ a:hover,
 a:active {
     color: #d4b44c;
 }
+/*
+  Challenge:
+   1. Convert the padding value of .btn from px to em
+   2. Space buttons both horizontally and vertically using margins and em units
+   3. Convert the font-size of .btn from px to em
+*/
+/*
+  Challenge:
+    - On narrow screens, each button should take up the full width
+      of their container 
+    - The buttons should display on the same row only at the 768px breakpoint
+*/
 
 .btn {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 500;
     text-decoration: none;
-    display: inline-block;
-    padding: 10px 20px;
+    display: block;
+    padding: 0.56em 1.11em;
+   
+    margin-bottom: 0.5em;
     border-radius: 4.6px;
+    text-align: center;
+    
 }
 
 .btn-dark {
@@ -84,10 +124,25 @@ a:active {
 
 /* ----- LAYOUT ----- */
 
+/*
+  Challenge:
+   1. Convert the padding of header, section, and footer from px to em
+   2. Convert the bottom-margin of .main-image from px to em
+*/
+
+/*
+  Challenge:
+    1. Create a new media query that targets a browser width of 768px or wider. 
+    2. Within the media query, select the header, section, and footer elements
+       and apply a top and bottom padding of 2.875em.
+    3. Adjust the initial padding for the header, section and footer elements.
+       Set a top and bottom padding value in em equal to 20px.
+*/
+
 header, 
 section, 
 footer {
-    padding: 46px 0;
+    padding: 1.25em 0;
 }
 
 header, 
@@ -99,27 +154,189 @@ header,
     color: whitesmoke;
 }
 
+/*
+ Challenge:
+  Use a percentage value to create flexible containers 
+  that resize according to their parent’s width
+*/
+
 .container {
-    width: 640px;
+    width: 90%;
     margin: 0 auto;
+    /* border: 2px solid tomato; */
+    max-width: 800px;
 }
 
+/*
+  Challenge:
+   1. Apply a maximum width to .main-image
+   2. Make the image slightly narrower than 
+     its container and center it on the page 
+*/
 .main-image {
     width: 100%;
-    margin-bottom: 32px;
+   margin: 0px auto 2em;
+    max-width: 600px;
+    display: block;
+    
 }
+
+/*
+  Challenge: Wrap the feature-item divs with flexbox
+    1. Each .feature-item should grow from an initial main size of 220px
+    2. Allow the items inside .section-two-image-container to
+       wrap onto multiple lines
+    3. Apply a gap between each .feature-item
+*/
 
 .section-two-image-container {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
+/*
+Challenge:
+- Make each .feature-image fluid using a percentage
+- The images should display proportionally on the same line, 
+each taking up about half of the space
+*/
 .feature-image {
-    width: 310px;
+    width: 100%;
     border-radius: 4.6px;
+   
+}
+.feature-item {
+    flex-basis: 260px;
+    flex-grow: 1;
 }
 
 footer {
     text-align: center;
     color: #5f29a3;
+}
+
+/* ----- NAVIGATION ----- */
+
+/*
+  Challenge: Write initial nav styles
+    1. Center-align the header content
+    2. Apply a top margin to the nav element to create space
+       between the nav and subheading
+    3. Make sure that the center alignment, the nav’s top margin,
+       and dotted borders between links display only on viewport widths
+       narrower than 768px
+*/
+
+
+
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.125rem;
+    padding: 0.85em 0;
+    display: block;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+
+
+/*
+Challenge:
+1. Create a media query that targets a browser width
+of 480px or wider
+2. Within the media query, select .section-two-image-container
+and add the flexbox property to display the images on the same row
+3. Inside the media query, select .feature-image and 
+add the fluid width for wider screens only
+*/
+
+/* screens larger than 480px
+@media (min-width: 480px) {
+    .section-two-image-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    .feature-image {
+        width: 48.8%;
+    }
+} */
+
+/*
+  Challenge: Navigation styles for wider screens
+    1. Use flexbox to display the navigation horizontally
+       on one row when the screen is 768px or wider
+    2. Align the nav with the right edge of its container
+    3. Apply space between each link with a margin
+    4. On wider screens, all of the content inside the header
+       should be vertically centered
+*/
+
+
+@media (min-width: 768px) {
+
+    header, 
+    section, 
+    footer {
+        padding: 2.875em 0;
+    }
+
+.btn {
+    display: inline-block;
+    margin-right: 0.5em;
+}
+
+h1 {
+    font-size: 2.275rem;
+}
+h2 {
+    
+    font-size: 1.75rem; /* convert to rem */
+    
+}
+.subheading {
+    font-size: 1.25rem;
+}
+
+h3 {
+    font-size: 1.25rem; /* convert to rem */
+}
+
+p {
+    font-size: 1.125rem;
+}
+.headcontent {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}   
+nav li {
+    margin-left: 1.25em;
+}
+
+ul {
+    display: flex;
+}
+}
+
+
+
+@media (max-width: 767px) {
+    header {
+        text-align: center;
+    }
+    
+    nav {
+        margin-top: 1.5em;
+    }  
+    
+    li:not(:last-child) {
+        border-bottom: 1px dotted #a190b6;
+    }  
 }
